@@ -279,7 +279,9 @@ function osd_directory {
     OSD_JOURNAL_TMP="OSD_JOURNAL$OSD_ID"
     OSD_JOURNAL=${!OSD_JOURNAL_TMP}
     if [ -n "${OSD_JOURNAL}" ]; then
-      ceph-disk -v prepare ${OSD_JOURNAL}
+      if [ -z "${JOURNAL_PRESERVE}" ]; then
+        ceph-disk -v prepare ${OSD_JOURNAL}
+      fi
       OSD_J=${OSD_JOURNAL}
     elif [ -n "${JOURNAL_DIR}" ]; then
        OSD_J="${JOURNAL_DIR}/journal.${OSD_ID}"

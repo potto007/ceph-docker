@@ -237,6 +237,7 @@ following environment variables will control its creation:
 * `JOURNAL` is the location of the journal (default is the `journal` file inside the OSD data directory)
 * `HOSTNAME` is the name of the host; it is used as a flag when adding the OSD to the CRUSH map
 * `OSD_JOURNAL<osd-id>` optional - providing for each OSD directory to be used will prepare and mount the supplied block device
+* `JOURNAL_PRESERVE` optional - if set, skips the prepare step for OSD_JOURNAL
 
 The old option `OSD_ID` is now unused.  Instead, the script will scan for each directory in `/var/lib/ceph/osd` of the form `<cluster>-<osd-id>`.
 
