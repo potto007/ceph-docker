@@ -33,8 +33,8 @@ ADD ./confd/conf.d/* /etc/confd/conf.d/
 # Patch out ceph-disk, to allow overrides to user and group names
 # This can be removed once PR #7351 is merged in ceph/ceph (and backported to
 # the version used by ceph/ceph-docker)
-ADD ./ceph-disk.patch /ceph-disk.patch
-RUN cd /usr/sbin && patch -p1 -n -u < /ceph-disk.patch
+#ADD ./ceph-disk.patch /ceph-disk.patch
+#RUN cd /usr/sbin && patch -p1 -n -u < /ceph-disk.patch
 
 # Add volumes for Ceph config and data
 VOLUME ["/etc/ceph","/var/lib/ceph"]
