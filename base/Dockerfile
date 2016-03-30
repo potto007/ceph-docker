@@ -1,13 +1,13 @@
 # CEPH BASE IMAGE
-# CEPH VERSION: Infernalis
-# CEPH VERSION DETAIL: 9.2.x
+# CEPH VERSION: Jewel
+# CEPH VERSION DETAIL: 10.1.x
 
 FROM ubuntu:14.04
 MAINTAINER Sébastien Han "seb@redhat.com"
 
 ENV ETCDCTL_VERSION v2.2.4
 ENV ETCDCTL_ARCH linux-amd64
-ENV CEPH_VERSION infernalis
+ENV CEPH_VERSION jewel
 
 ENV KVIATOR_VERSION 0.0.5
 ENV CONFD_VERSION 0.10.0
@@ -35,4 +35,3 @@ RUN chmod +x /usr/local/bin/confd && mkdir -p /etc/confd/conf.d && mkdir -p /etc
 
 ADD entrypoint.sh /entrypoint.sh
 ENTRYPOINT ["/entrypoint.sh"]
-
