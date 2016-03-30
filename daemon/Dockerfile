@@ -4,7 +4,7 @@
 #
 # VERSION 0.0.1
 
-FROM ceph/base
+FROM potto/ceph-base:jewel
 MAINTAINER Sébastien Han "seb@redhat.com"
 
 # patch is only needed until PR #7351 is merged in ceph/ceph (and backported
