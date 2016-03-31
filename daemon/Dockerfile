@@ -9,7 +9,7 @@ MAINTAINER Sébastien Han "seb@redhat.com"
 
 # patch is only needed until PR #7351 is merged in ceph/ceph (and backported
 # to the version used in ceph/ceph-docker)
-RUN apt-get update && apt-get -y install runit patch sharutils && \
+RUN apt-get update && apt-get -y install libjemalloc-dev runit patch sharutils && \
     apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 # Add bootstrap script
@@ -35,6 +35,9 @@ ADD ./confd/conf.d/* /etc/confd/conf.d/
 # the version used by ceph/ceph-docker)
 #ADD ./ceph-disk.patch /ceph-disk.patch
 #RUN cd /usr/sbin && patch -p1 -n -u < /ceph-disk.patch
+
+# Preload jemalloc
+ENV LD_PRELOAD /usr/lib/x86_64-linux-gnu/libjemalloc.so
 
 # Add volumes for Ceph config and data
 VOLUME ["/etc/ceph","/var/lib/ceph"]
